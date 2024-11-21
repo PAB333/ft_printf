@@ -6,7 +6,7 @@
 /*   By: pibreiss <pibreiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 11:47:08 by pibreiss          #+#    #+#             */
-/*   Updated: 2024/11/20 23:27:41 by pibreiss         ###   ########.fr       */
+/*   Updated: 2024/11/21 00:51:31 by pibreiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@
 # include <stdarg.h>
 
 int		ft_printf(const char *format, ...);
-void	ft_putchar(char c);
-void	ft_putstr(char *str);
-void	ft_putnbr(int nb);
+void	ft_putchar(char c, int *count);
+void	ft_putstr(char *str, int *count);
+void	ft_putnbr(int nb, int *count);
+void	ft_putnbr_ui(unsigned int nb, int *count);
 
 #endif

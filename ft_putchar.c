@@ -6,13 +6,14 @@
 /*   By: pibreiss <pibreiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 23:26:08 by pibreiss          #+#    #+#             */
-/*   Updated: 2024/11/20 23:26:55 by pibreiss         ###   ########.fr       */
+/*   Updated: 2024/11/21 01:10:38 by pibreiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putchar(char c)
+void	ft_putchar(char c, int *count)
 {
 	write(1, &c, 1);
+	(*count)++;
 }

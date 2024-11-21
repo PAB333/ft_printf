@@ -6,17 +6,18 @@
 /*   By: pibreiss <pibreiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 12:29:54 by pibreiss          #+#    #+#             */
-/*   Updated: 2024/11/19 12:31:38 by pibreiss         ###   ########.fr       */
+/*   Updated: 2024/11/21 01:02:48 by pibreiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
-void	ft_putstr(char *str)
+void	ft_putstr(char *str, int *count)
 {
 	int	i;
 
 	i = -1;
 	while (str[++i])
 		write(1, &str[i], 1);
+	*count += i;
 }

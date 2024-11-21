@@ -6,18 +6,18 @@
 #    By: pibreiss <pibreiss@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/16 19:25:04 by pibreiss          #+#    #+#              #
-#    Updated: 2024/11/16 19:34:37 by pibreiss         ###   ########.fr        #
+#    Updated: 2024/11/21 00:56:07 by pibreiss         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 CC = gcc
 CFLAGS = -Werror -Wextra -Wall
-SRC = 
+SRC = ft_printf.c ft_putchar.c ft_printf.h ft_putnbr.c ft_putstr.c
 
 OBJS = $(SRC:%.c=%.o)
 
-.PHONY all clean fclean re
+.PHONY: all clean fclean re
 
 all : $(NAME)
 
