@@ -6,13 +6,33 @@
 /*   By: pibreiss <pibreiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 11:50:17 by pibreiss          #+#    #+#             */
-/*   Updated: 2024/11/21 01:02:01 by pibreiss         ###   ########.fr       */
+/*   Updated: 2024/11/21 16:11:41 by pibreiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_printf(const char *format, ...)
+void	search_format(const char *format, int i, int *count, va_list arg)
+{
+	if (format[i + 1] == 'd' || format[i + 1] == 'i')
+		ft_putnbr((int)va_arg(arg, int), count);
+	if (format[i + 1] == 'u')
+		ft_putnbr_ui((unsigned int)va_arg(arg, unsigned int), count);
+	if (format[i + 1] == 'x')
+		ft_putexa_lcase((unsigned int)va_arg(arg, unsigned int), count);
+	if (format[i + 1] == 'X')
+		ft_putexa_ucase((unsigned int)va_arg(arg, unsigned int), count);
+	if (format[i + 1] == 's')
+		ft_putstr((char *)va_arg(arg, char *), count);
+	if (format[i + 1] == 'c')
+		ft_putchar((int)va_arg(arg, int), count);
+	if (format[i + 1] == 'p')
+		ft_putptr((void *)va_arg(arg, void *), count);
+	if (format[i + 1] == '%')
+		ft_putchar('%', count);
+}
+
+int	ft_printf(const char *format, ...)
 {
 	int		i;
 	int		count;
@@ -25,27 +45,19 @@ int ft_printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			if (format[i + 1] == 'd' || format[i + 1] == 'i')
-				ft_putnbr((int)va_arg(arg, int), &count);
-			if (format[i + 1] == 'u')
-				ft_putnbr_ui((unsigned int)va_arg(arg, unsigned int), &count);
-			if (format[i + 1] == 'x' || format[i + 1] == 'X')
-			if (format[i + 1] == 's')
-				ft_putstr(va_arg(arg, char *), &count);
-			if (format[i + 1] == 'c')
-				ft_putchar(va_arg(arg, int), &count);
-			if (format[i + 1] == 'p')
-			if (format[i + 1] == '%')
-				ft_putchar('%', &count);
+			search_format(format, i, &count, arg);
 			i++;
 		}
 		else
 			ft_putchar(format[i], &count);
 	}
+	va_end(arg);
 	return (count);
 }
-int main(void)
-{
-	ft_printf("test : %u", 4294967295);
-	printf("%d",ft_printf("\n %u \n",4294967295));
-}
+// #include <stdio.h>
+// #include <limits.h>
+// int main(void)
+// {
+// 	printf("%d",ft_printf("\n%p\n",0));
+// 	printf("%d", printf("\n%p\n", 0));
+// }

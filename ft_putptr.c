@@ -1,45 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_putptr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pibreiss <pibreiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/19 12:18:20 by pibreiss          #+#    #+#             */
-/*   Updated: 2024/11/21 15:34:43 by pibreiss         ###   ########.fr       */
+/*   Created: 2024/11/21 15:36:01 by pibreiss          #+#    #+#             */
+/*   Updated: 2024/11/21 16:12:44 by pibreiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putnbr(int nb, int *count)
+void	ft_putexa_ptr(unsigned long nb, int *count)
 {
-	if (nb == -2147483648)
+	if (nb >= 16)
 	{
-		ft_putstr("-2147483648", count);
-		return ;
-	}
-	if (nb < 0)
-	{
-		ft_putchar('-', count);
-		nb = -nb;
-	}
-	if (nb >= 10)
-	{
-		ft_putnbr(nb / 10, count);
-		ft_putnbr(nb % 10, count);
+		ft_putexa_ptr(nb / 16, count);
+		ft_putexa_ptr(nb % 16, count);
 	}
 	else
-		ft_putchar(nb + 48, count);
+	{
+		if (nb < 10)
+			ft_putchar(nb + 48, count);
+		else
+			ft_putchar(nb - 10 + 'a', count);
+	}
 }
 
-void	ft_putnbr_ui(unsigned int nb, int *count)
+void	ft_putptr(void *ptr, int *count)
 {
-	if (nb >= 10)
-	{
-		ft_putnbr(nb / 10, count);
-		ft_putnbr(nb % 10, count);
-	}
+	unsigned long	adress;
+
+	if (ptr == 0)
+		ft_putstr("(nil)", count);
 	else
-		ft_putchar(nb + 48, count);
+	{
+		adress = (unsigned long)ptr;
+		ft_putstr("0x", count);
+		ft_putexa_ptr(adress, count);
+	}
 }
