@@ -6,15 +6,16 @@
 #    By: pibreiss <pibreiss@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/16 19:25:04 by pibreiss          #+#    #+#              #
-#    Updated: 2024/11/21 15:47:53 by pibreiss         ###   ########.fr        #
+#    Updated: 2024/11/28 14:35:10 by pibreiss         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 CC = gcc
 CFLAGS = -Werror -Wextra -Wall
-SRC = ft_printf.c ft_putchar.c ft_printf.h ft_putnbr.c ft_putstr.c \
+SRC = ft_printf.c ft_putchar.c ft_putnbr.c ft_putstr.c \
 		ft_putexa.c ft_putptr.c
+HEADERS = ft_printf.h
 
 OBJS = $(SRC:%.c=%.o)
 
@@ -22,7 +23,7 @@ OBJS = $(SRC:%.c=%.o)
 
 all : $(NAME)
 
-$(NAME): $(OBJS) ft_printf.h
+$(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 
 %.o: %.c
@@ -31,7 +32,7 @@ $(NAME): $(OBJS) ft_printf.h
 clean :
 	rm -f $(OBJS)
 
-fclean :
+fclean : clean
 	rm -f $(NAME)
 
 re: fclean all
