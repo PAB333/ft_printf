@@ -6,7 +6,7 @@
 #    By: pibreiss <pibreiss@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/16 19:25:04 by pibreiss          #+#    #+#              #
-#    Updated: 2024/11/28 14:35:10 by pibreiss         ###   ########.fr        #
+#    Updated: 2024/12/05 16:39:54 by pibreiss         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,6 @@ CC = gcc
 CFLAGS = -Werror -Wextra -Wall
 SRC = ft_printf.c ft_putchar.c ft_putnbr.c ft_putstr.c \
 		ft_putexa.c ft_putptr.c
-HEADERS = ft_printf.h
 
 OBJS = $(SRC:%.c=%.o)
 
@@ -26,7 +25,7 @@ all : $(NAME)
 $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 
-%.o: %.c
+%.o: %.c ft_printf.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean :

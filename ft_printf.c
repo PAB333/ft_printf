@@ -6,7 +6,7 @@
 /*   By: pibreiss <pibreiss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 11:50:17 by pibreiss          #+#    #+#             */
-/*   Updated: 2024/11/21 16:11:41 by pibreiss         ###   ########.fr       */
+/*   Updated: 2024/12/05 16:42:00 by pibreiss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ int	ft_printf(const char *format, ...)
 
 	i = -1;
 	count = 0;
+	if (format == NULL)
+		return (-1);
 	va_start(arg, format);
 	while (format[++i])
 	{
@@ -58,6 +60,6 @@ int	ft_printf(const char *format, ...)
 // #include <limits.h>
 // int main(void)
 // {
-// 	printf("%d",ft_printf("\n%p\n",0));
-// 	printf("%d", printf("\n%p\n", 0));
+// 	printf("%d\n",ft_printf(NULL));
+// 	printf("%d\n", printf(NULL));
 // }
